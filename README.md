@@ -28,6 +28,7 @@ First install Node.js and MongoDB
 ### `npm i jsonwebtoken`
 
 **jwt.sign(payload, secretOrPrivateKey, [options, callback])**
+
 (Asynchronous) If a callback is supplied, the callback is called with the err or the JWT.
 (Synchronous) Returns the JsonWebToken as string
 payload could be an object literal, buffer or string representing valid JSON.
