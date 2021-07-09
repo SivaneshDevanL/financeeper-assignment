@@ -18,11 +18,23 @@ You will also see any lint errors in the console.
 
 ### `npm i express`
 
+This is a Node.js module available through the npm registry.
+Before installing, download and install Node.js. Node.js 0.10 or higher is required.
+
 ### `npm i mongoose`
+
+First install Node.js and MongoDB
 
 ### `npm i jsonwebtoken`
 
+**jwt.sign(payload, secretOrPrivateKey, [options, callback])**
+(Asynchronous) If a callback is supplied, the callback is called with the err or the JWT.
+(Synchronous) Returns the JsonWebToken as string
+payload could be an object literal, buffer or string representing valid JSON.
+
 ### `npm i dotenv`
+
+Dotenv is a zero-dependency module that loads environment variables from a .env file into process.env. Storing configuration in the environment separate from code is based on The Twelve-Factor App methodology.
 
 ### `npm test`
 
