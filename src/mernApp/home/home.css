@@ -1,0 +1,12 @@
+body{
+  background-color: aliceblue;
+}
+
+#main{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+h5:hover{
+    cursor: pointer;
+}

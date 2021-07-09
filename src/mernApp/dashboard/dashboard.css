@@ -1,0 +1,13 @@
+/* #page2{
+    background-color: antiquewhite;
+} */
+.flex{
+    display: flex;
+    justify-content: space-between;
+}
+#dash{
+    margin:2rem;
+}
+#input:hover,button:hover{
+    cursor: pointer;
+}
