@@ -11,37 +11,70 @@ app.use(cors())
 app.use(express.json())
 app.use(express.urlencoded())
 
+var name,pass;
+function get(){
 app.get('/',(req,res)=>{
-    MERN.find({})
-    .then((files)=>
-    res.status(200).json({files}))  
+    MERN.find({userName:name,password:pass}).then((data)=>{
+        res.status(200).json({data})}
+    )
 })
+}
 app.post('/add',(req,res)=>{
-    
-     MERN
-     .create(req.body)
-
+        MERN.findOneAndUpdate({userName:name,password:pass},{ $set: { body: req.body} } ,  
+        {upsert: true},function(err,doc) {
+            if (err) { throw err; }
+            else {    
+                 console.log("Updated");
+                 res.status(200).json({
+                     message:'success'
+                 })
+                 }}
+    )
+    get()
 })
 
 
 app.post("/login", (req, res) => {
     const {userName,password} = req.body;
-    if(userName==='sivanesh'&&password==='123'){
-    const name = {name: userName};
-    const authToken = generateAuth(name);
-    res.status(200).json({
-        loggedIn: true,
-        authToken,
-        message:'success'
-    })}
+    name=userName
+    pass=password
+    get()
+    MERN.find({userName:userName,password:password})
+    .then(x=>{
+        if(x.length!=0)
+        {
+            const name = {name: userName};
+            const authToken = generateAuth(name);
+            res.status(200).json({
+                loggedIn: true,
+                authToken,
+                message:'success'
+            })}
+    })
+})
+
+app.post('/signup',(req,res)=>{
+    const {userName,password}=req.body
+    MERN.find({userName:userName,password:password})
+    .then(x=>{
+        if(x.length==0){
+            MERN.create(req.body);
+            res.status(200).json({
+                message:'created'
+            })
+        }
+        else{
+            res.status(400).json({
+                message:'failed'
+            })
+        }
+    })
 })
 
 
-
-app.use(authenticator);
 app.get("/secure-posts", authenticator, (req, res) => {
     res.status(200).json({
-        message: "Success",
+        message: "success",
     });
 });
 

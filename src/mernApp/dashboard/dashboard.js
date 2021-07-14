@@ -11,7 +11,6 @@ export default function Dashboard(){
         .then(setState)
     },[])
     function file(e){
-        //  console.log(typeof e.target.files[0]);
         fetch("http://localhost:3001/add",{
             headers:{'content-type':'application/json'},
             method:'post',
@@ -26,7 +25,7 @@ export default function Dashboard(){
         <div className='flex'>
         <input id='input' type='file' accept=".json,application/json" onChange={file}/>
         <button onClick={()=>history.push('/')}>log out</button></div>
-        {state&&state.files.map((item,i)=>(
+        {state&&state.data[0].body&&state.data[0].body.map((item,i)=>(
             <>   
             <h4>{item.title}</h4>
             <p>{item.body}</p>

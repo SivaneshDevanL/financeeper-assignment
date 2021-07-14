@@ -1,12 +1,16 @@
-body{
-  background-color: aliceblue;
-}
+
 
 #main{
   display: flex;
   flex-direction: column;
   align-items: center;
+  row-gap: 1vh;
 }
 h5:hover{
     cursor: pointer;
+}
+#flex{
+  width:13%;
+  display: flex;
+  justify-content: space-between;
 }
