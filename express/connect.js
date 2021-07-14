@@ -8,7 +8,7 @@ mongoose.connect('mongodb://localhost:27017/MERN', {
 
 mongoose.connection
 .once('open', () => {
-    console.log('connection established')
+    console.log('connectionEstablished')
 })
 .on('connectionError', (err) => {
     console.log(err);
